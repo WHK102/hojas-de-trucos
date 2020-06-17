@@ -9,15 +9,15 @@ say otherwise.
 Initial configurations and packages required for installation and future
 configurations.
 
-
-### Initial packages
-
 Set UTF8 as default input for shell
 
 ```bash
 export LC_CTYPE=en_US.UTF-8;
 export LC_ALL=en_US.UTF-8;
 ```
+
+
+### Initial packages
 
 Update the packages to prevent problems when trying to install a package that is
 not in the list of available applications.
