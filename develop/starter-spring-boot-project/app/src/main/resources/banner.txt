@@ -1,0 +1,4 @@
++------------------------------------------------------------
+| ${application.title} ${application.formatted-version}
+| Spring Boot Framework ${spring-boot.formatted-version}
++------------------------------------------------------------

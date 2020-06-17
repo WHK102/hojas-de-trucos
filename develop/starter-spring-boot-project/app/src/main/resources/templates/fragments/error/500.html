@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+    <head>
+        <title th:text="#{messages.fragments.error.500.title}"></title>
+    </head>
+    <body>
+        <div class="container mt-5 mb-5 text-center" layout:fragment="content">
+            <h1 class="page-header" th:text="#{messages.fragments.error.500.header}"></h1>
+            <p class="lead" th:text="#{messages.fragments.error.500.message}"></p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+    <head>
+        <title th:text="#{messages.fragments.main.title}"></title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <main role="main" class="container mt-5 mb-5 text-center">
+                <h1 th:text="#{messages.fragments.main.title}"></h1>
+                <p class="lead">
+                    Use este documento como una forma de comenzar rápidamente
+                    cualquier proyecto nuevo.
+                </p>
+            </main>
+        </div>
+    </body>
+</html>
