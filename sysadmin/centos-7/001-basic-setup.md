@@ -61,7 +61,7 @@ setenforce 0;
 You can check the SeLinux status:
 
 ```bash
-sestatus
+sestatus;
 SELinux status:                 disabled
 ```
 
@@ -78,7 +78,7 @@ replace.
 For undo changes you can execute:
 
 ```bash
-grub2-mkconfig -o /etc/grub2.cfg
+grub2-mkconfig -o /etc/grub2.cfg;
 ```
 
 
@@ -205,11 +205,11 @@ repositories enabled throughout the life of the server.
 
 ```bash
 # Reset the cache content
-yum clean all
-yum -y update
+yum clean all;
+yum -y update;
 
 # Optional but not required: yum -y install centos-release-scl
-yum -y install epel-release
+yum -y install epel-release;
 
 # Disable mirrors for fast checkout
 cat /etc/yum/pluginconf.d/fastestmirror.conf;
@@ -223,7 +223,7 @@ is no guarantee using mirrors.
 Uncomment `baseurl` and comment `mirrorlist` and `metalink`:
 
 ```bash
-cat /etc/yum.repos.d/epel.repo
+cat /etc/yum.repos.d/epel.repo;
 baseurl=http://...
 #mirrorlist=...
 #metalink=...
@@ -232,9 +232,9 @@ baseurl=http://...
 For finish, clear all cache and renew the applications list:
 
 ```bash
-yum clean all
-rm -rf /var/cache/yum
-yum -y update
+yum clean all;
+rm -rf /var/cache/yum;
+yum -y update;
 ```
 
 
@@ -243,14 +243,14 @@ yum -y update
 Install only after epel.
 
 ```bash
-yum -y install deltarpm
+yum -y install deltarpm;
 ```
 
 It is necessary to update the packages because epel updates to deltarpm and
 deltarpm updates to epel:
 
 ```bash
-yum -y update
+yum -y update;
 ```
 
 
@@ -285,24 +285,24 @@ provided ( http://www.horaoficial.cl/doc/sincronizacion.pdf ):
 
 ```bash
 # Install required app
-yum -y install ntp ntpdate
+yum -y install ntp ntpdate;
 
 # Set the NTP server
-echo 'server ntp.shoa.cl' >> /etc/ntp.conf
+echo 'server ntp.shoa.cl' >> /etc/ntp.conf;
 
 # Change timezone of server to Chile
 rm -f /etc/localtime;
 ln -s /usr/share/zoneinfo/Chile/Continental /etc/localtime;
 
 # Apply changes and enable the service
-systemctl enable ntpd.service
-systemctl restart ntpd.service
+systemctl enable ntpd.service;
+systemctl restart ntpd.service;
 
 # Sync the NTP server
-ntpd -gq
+ntpd -gq;
 
 # Validate the current date and time
-date
+date;
 ```
 
 
@@ -361,6 +361,6 @@ Eliminate OVH monitoring services, avoid security problems and maintain
 integrity in system access:
 
 ```bash
-yum -y remove noderig beamium ovh-rtm-metrics-toolkit ovh-rtm-binaries
-rm -rf /opt/noderig/
+yum -y remove noderig beamium ovh-rtm-metrics-toolkit ovh-rtm-binaries;
+rm -rf /opt/noderig/;
 ```
