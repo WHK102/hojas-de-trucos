@@ -1,22 +1,29 @@
 package packagename.controllers.errors;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.MediaType;
 import org.springframework.http.HttpStatus;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 
-@Controller
-public class CustomErrorController implements ErrorController
+@ControllerAdvice
+public class CustomErrorController
 {
-    @RequestMapping("/error")
-    public String handleError(HttpServletRequest request)
+    @RequestMapping(produces=MediaType.TEXT_HTML_VALUE)
+    @ExceptionHandler(Exception.class)
+    // @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handler(HttpServletRequest request, NoHandlerFoundException e)
     {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-         
+
         if(status == null)
         {
             return "fragments/error/500";
@@ -40,11 +47,5 @@ public class CustomErrorController implements ErrorController
         {
             return "fragments/error/500";
         }
-    }
- 
-    @Override
-    public String getErrorPath()
-    {
-        return "/error";
     }
 }

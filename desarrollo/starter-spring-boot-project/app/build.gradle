@@ -26,6 +26,11 @@ dependencies {
 	}
 }
 
+tasks.withType(JavaCompile) {
+	// Strict compilation
+	options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation' << '-Werror'
+}
+
 test {
 	useJUnitPlatform()
 }

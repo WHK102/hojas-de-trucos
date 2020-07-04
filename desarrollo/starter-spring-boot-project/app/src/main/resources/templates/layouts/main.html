@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title></title>
+        <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE" th:text="#{messages.globals.appname}"></title>
 
         <link th:href="@{/assets/generics/css/bootstrap.min.css}" rel="stylesheet" />
         <link th:href="@{/assets/generics/css/font-awesome.min.css}" rel="stylesheet" />
