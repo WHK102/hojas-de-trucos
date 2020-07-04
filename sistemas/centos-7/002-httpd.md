@@ -1,7 +1,8 @@
 # Hoja de trucos - Instalación del servicio HTTPD
 
 Se asume que se han instalado los repositorios recomendados de Epel Release y
-DeltaRPM detallados en [001-basic-setup.md](./001-basic-setup.md).
+DeltaRPM detallados en
+[001-configuración-inicial.md](./001-configuración-inicial.md).
 
 Por razones de seguridad, elimine todo el contenido del archivo de bienvenida
 pero **no lo elimine el archivo**, porque cuando httpd se actualice volverá a
@@ -26,7 +27,7 @@ root@server:~# yum -y install httpd-devel httpd-itk goaccess;
 root@server:~# yum -y install mod_ssl certbot python2-certbot-apache
 
 # Para la seguridad adicional
-root@server:~# yum -y install mod_security;
+root@server:~# yum -y install mod_security mod_limitipconn;
 
 # Instalación de la aplicación que hará el envío de correos
 root@server:~# yum -y install sendmail
@@ -73,6 +74,13 @@ root@server:~# echo '
         Deny from all
     </LimitExcept>
 </Directory>
+
+# Módulo mod_limitipconn
+# No incluir si no se usa como punto de exposición final ya que puede bloquear
+# al proxy reverso como en el caso de cloudflare.
+<Location />
+    MaxConnPerIP 20
+</Location>
 
 # Nombre y contacto predeterminado. Esto es requerido por cada host virtual,
 # pero con este valor predeterminado ya no será necesario y se aplicará a todos
